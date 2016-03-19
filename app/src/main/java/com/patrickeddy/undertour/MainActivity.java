@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.Parse;
@@ -148,11 +147,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
-    public void addTour(final View theView) {
-        addTour();
+    public void createTour(final View theView) {
+        createTour();
     }
 
-    private void addTour() {
+    private void createTour() {
         Intent newTourIntent = new Intent(this, EditTourActivity.class);
         startActivity(newTourIntent);
     }
