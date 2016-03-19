@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.FocusFinder;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -75,7 +76,6 @@ public class TourActivity extends Activity implements AdapterView.OnItemClickLis
         myLocationAdapter = new LocationAdapter(this, myTourLocations);
         myLocationListView = (ListView) findViewById(R.id.tour_location_list);
         myLocationListView.setAdapter(myLocationAdapter);
-
         myLocationListView.setOnItemClickListener(this);
     }
 
@@ -87,7 +87,8 @@ public class TourActivity extends Activity implements AdapterView.OnItemClickLis
             String baseQuery = "geo:";
             String lat = String.valueOf(location.getCoordinate().getLatitude());
             String lo = String.valueOf(location.getCoordinate().getLongitude());
-            Uri mapsUri = Uri.parse(baseQuery + lat + ", " + lo);
+            String name = location.getName();
+            Uri mapsUri = Uri.parse(baseQuery + lat + ", " + lo + "?q=" + name);
             Intent mapsIntent = new Intent(Intent.ACTION_VIEW, mapsUri);
             if (mapsIntent.resolveActivity(getPackageManager()) != null) {
                 startActivity(mapsIntent);

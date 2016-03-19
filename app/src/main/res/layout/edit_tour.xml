@@ -2,45 +2,57 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
     <EditText
-        android:id="@+id/edit_tour_tour_name"
+        android:id="@+id/edit_tour_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tour Name"
-        android:inputType="text"/>
+        android:layout_alignParentTop="true"
+        android:capitalize="words"
+        android:hint="Tour Name"
+        android:textSize="20sp"/>
 
     <ListView
+        android:id="@+id/edit_tour_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-    </ListView>
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_tour_name"
+        android:layout_marginBottom="100dp"></ListView>
 
     <LinearLayout
-
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_weight="1"
         android:gravity="bottom"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/button1"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="fill_parent"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:text="Add" />
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/button2"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:text="Finish" />
-    </LinearLayout>Layout>
+            <Button
+                android:id="@+id/edit_tour_create_button"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="Create Tour"
+                android:textSize="15sp"
+                android:onClick="createTour"/>
+            <Button
+                android:id="@+id/edit_tour_add_new_location"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="left"
+                android:text="Add New Location"
+                android:onClick="addNewLocation"/>
+
+        </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>

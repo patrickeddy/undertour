@@ -34,6 +34,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private TourAdapter myTourAdapter;
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        if (myTours != null) {
+            fetchTours();
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -43,18 +51,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         // Fetch all of the tours.
         //TODO: Actually fetch the tours from the server.
         myTours = new ArrayList<>();
-        // Fetch the tours
-        ParseQuery<Tour> tourQuery = ParseQuery.getQuery("Tour");
-        tourQuery.findInBackground(new FindCallback<Tour>() {
-            @Override
-            public void done(List<Tour> tours, ParseException e) {
-                if (e != null){
-                    Log.e("TOUR-FETCH", e.getMessage());
-                }
-                myTours.addAll(tours);
-                myTourAdapter.notifyDataSetChanged();
-            }
-        });
 
         // Set the adapter.
         myTourAdapter = new TourAdapter(this, myTours);
@@ -62,6 +58,22 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         myTourListView.setAdapter(myTourAdapter);
 
         myTourListView.setOnItemClickListener(this);
+    }
+
+    private void fetchTours() {
+        myTours.clear();
+        // Fetch the tours
+        ParseQuery<Tour> tourQuery = ParseQuery.getQuery("Tour");
+        tourQuery.findInBackground(new FindCallback<Tour>() {
+            @Override
+            public void done(List<Tour> tours, ParseException e) {
+                if (e != null) {
+                    Log.e("TOUR-FETCH", e.getMessage());
+                }
+                myTours.addAll(tours);
+                myTourAdapter.notifyDataSetChanged();
+            }
+        });
     }
 
     private void parseInit() {
@@ -84,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         testTour.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
-                if (e!= null) {
+                if (e != null) {
                     Log.e("SAMPLE-DATA", e.getMessage());
                 } else {
                     try {
@@ -136,9 +148,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     private void addTour() {
-        //TODO: Launch new tour activity.
-        myTours.add(new Tour());
-        myTourAdapter.notifyDataSetChanged();
+        Intent newTourIntent = new Intent(this, EditTourActivity.class);
+        startActivity(newTourIntent);
     }
 
 
@@ -147,6 +158,5 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Intent newTourIntent = new Intent(this, TourActivity.class);
         newTourIntent.putExtra("tourObjectId", myTours.get(position).getObjectId());
         startActivity(newTourIntent);
-        Toast.makeText(this, "Clicked tour!", Toast.LENGTH_SHORT).show();
     }
 }
