@@ -43,7 +43,7 @@ public class EditTourAdapter extends BaseAdapter{
     }
 
     class ViewHolder{
-        TextView title;
+        TextView title, deleteButton;
     }
 
     @Override
@@ -52,12 +52,25 @@ public class EditTourAdapter extends BaseAdapter{
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.edit_list_row, null);
             holder.title = (TextView) convertView.findViewById(R.id.edit_tour_list_row_title);
+            holder.deleteButton = (TextView) convertView.findViewById(R.id.edit_tour_delete_button);
+
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        TourLocation currentLocation = myTourLocations.get(position);
+        final TourLocation currentLocation = myTourLocations.get(position);
         holder.title.setText(currentLocation.getName());
+
+        holder.deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Delete the location.
+                currentLocation.deleteInBackground();
+                myTourLocations.remove(currentLocation);
+                notifyDataSetChanged();
+            }
+        });
+
         return convertView;
     }
 }

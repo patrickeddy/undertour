@@ -143,7 +143,7 @@ public class EditTourActivity extends Activity implements GoogleApiClient.Connec
         try {
             List<Address> matches = geoCoder.getFromLocation(currentLocation.getLatitude(), currentLocation.getLongitude(), 1);
             Address bestMatch = (matches.isEmpty() ? null: matches.get(0));
-            currentLocationName = bestMatch.getFeatureName();
+            currentLocationName = bestMatch.getAddressLine(0) + " " + bestMatch.getLocality() + ", " + bestMatch.getAdminArea();
         } catch (IOException e) {
             e.printStackTrace();
         }

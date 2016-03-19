@@ -20,7 +20,12 @@
             <!--android:layout_gravity="center"-->
             <!--android:text="Get Tour Near Me" />-->
     <!--</LinearLayout>-->
-
+    <ProgressBar
+        android:id="@+id/main_list_progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        style="@android:style/Widget.ProgressBar.Small"
+        android:visibility="gone"/>
     <ListView
         android:id="@+id/main_tour_list"
         android:layout_width="match_parent"

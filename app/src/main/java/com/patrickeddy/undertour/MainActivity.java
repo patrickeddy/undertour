@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private static final String CLIENT_KEY = "01MuLrsIRrBJH6e3PuiMDE62eOP6wg1T87kJkDKe";
 
     private ListView myTourListView;
+    private ProgressBar myProgressBar;
 
     private List<Tour> myTours;
     private TourAdapter myTourAdapter;
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         // Set the adapter.
         myTourAdapter = new TourAdapter(this, myTours);
         myTourListView = (ListView) findViewById(R.id.main_tour_list);
+        myProgressBar = (ProgressBar) findViewById(R.id.main_list_progress_bar);
         myTourListView.setAdapter(myTourAdapter);
 
         myTourListView.setOnItemClickListener(this);
@@ -62,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     private void fetchTours() {
         myTours.clear();
+        myProgressBar.setVisibility(View.VISIBLE);
         // Fetch the tours
         ParseQuery<Tour> tourQuery = ParseQuery.getQuery("Tour");
         tourQuery.findInBackground(new FindCallback<Tour>() {
@@ -72,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 }
                 myTours.addAll(tours);
                 myTourAdapter.notifyDataSetChanged();
+                myProgressBar.setVisibility(View.GONE);
             }
         });
     }
