@@ -29,18 +29,17 @@
             android:orientation="vertical"
             android:paddingTop="25dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:paddingRight="25dp"
-                android:text="+"
-                android:textSize="25sp" />
+                android:src="@drawable/heart" />
 
             <TextView
                 android:id="@+id/tour_row_likes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingRight="15dp"
+                android:paddingRight="25dp"
                 android:text="25"
                 android:textSize="25sp" />
         </LinearLayout>
