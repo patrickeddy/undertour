@@ -9,17 +9,19 @@ import com.parse.ParseObject;
  */
 @ParseClassName("TourLocation")
 public class TourLocation extends ParseObject {
-    public String getName(){
-        return (String) get("name");
-    }
-    public ParseGeoPoint getCoordinate() {
-        return (ParseGeoPoint) get("coordinate");
+    public String getName() {
+        return getString("name");
     }
 
-    public void setName(final String theName){
+    public ParseGeoPoint getCoordinate() {
+        return getParseGeoPoint("coordinate");
+    }
+
+    public void setName(final String theName) {
         put("name", theName);
     }
-    public void setCoordinate(final ParseGeoPoint theCoordinate){
+
+    public void setCoordinate(final ParseGeoPoint theCoordinate) {
         put("coordinate", theCoordinate);
     }
 }
