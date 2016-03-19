@@ -35,7 +35,6 @@ public class Tour extends ParseObject {
     }
 
     public void like() {
-        int likes = getLikes();
-        put("likes", likes++);
+        put("likes", (getLikes() + 1));
     }
 }
