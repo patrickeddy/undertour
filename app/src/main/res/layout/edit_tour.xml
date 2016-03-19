@@ -4,14 +4,29 @@
     android:layout_height="fill_parent"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:id="@+id/app_title"
+        style="@style/AppBar"
+        android:layout_alignParentTop="true">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:text="Add New Tour"
+            android:padding="15dp"
+            android:textSize="25sp" />
+        </LinearLayout>
+
     <EditText
         android:id="@+id/edit_tour_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@id/app_title"
+        android:padding="15dp"
         android:capitalize="words"
         android:hint="Tour Name"
-        android:textSize="20sp"/>
+        android:textSize="20sp" />
 
     <ListView
         android:id="@+id/edit_tour_list"
@@ -39,18 +54,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
+                android:onClick="createTour"
                 android:text="Create Tour"
-                android:textSize="15sp"
-                android:onClick="createTour"/>
+                android:textSize="15sp" />
+
             <Button
                 android:id="@+id/edit_tour_add_new_location"
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_gravity="left"
-                android:text="Add New Location"
-                android:onClick="addNewLocation"/>
+                android:layout_weight="1"
+                android:onClick="addNewLocation"
+                android:text="Add New Location" />
 
         </LinearLayout>
     </LinearLayout>
