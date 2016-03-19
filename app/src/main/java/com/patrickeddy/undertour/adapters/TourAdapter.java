@@ -53,14 +53,18 @@ public class TourAdapter extends BaseAdapter {
         ViewHolder holder = new ViewHolder();
         if (convertView == null) {
             convertView = myInflater.inflate(R.layout.tour_list_row, null);
-            // Get the actual tour for this position.
-            Tour tour = ((Tour) getItem(position));
-            //TODO: Set the text for this row based on the tours' values.
+            holder.title = (TextView) convertView.findViewById(R.id.tour_row_name);
+            holder.likes = (TextView) convertView.findViewById(R.id.tour_row_likes);
 
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
+        // Get the actual tour for this position.
+        Tour tour = ((Tour) getItem(position));
+        holder.title.setText(tour.getTitle());
+        holder.likes.setText(String.valueOf(tour.getLikes()));
+
         return convertView;
     }
 }

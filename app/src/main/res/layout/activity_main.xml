@@ -5,27 +5,26 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:id="@+id/main_current_location"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:background="@color/lightBlue"
-        android:orientation="vertical"
-        android:padding="20dp">
+    <!--<LinearLayout-->
+        <!--android:id="@+id/main_current_location"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:background="@color/lightBlue"-->
+        <!--android:orientation="vertical"-->
+        <!--android:padding="20dp">-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Get Tour Near Me" />
-    </LinearLayout>
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:text="Get Tour Near Me" />-->
+    <!--</LinearLayout>-->
 
     <ListView
         android:id="@+id/main_tour_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/main_current_location"
         android:layout_marginBottom="50dp" />
 
     <Button
