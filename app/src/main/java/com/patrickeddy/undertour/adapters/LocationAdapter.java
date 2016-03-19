@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.patrickeddy.undertour.R;
-import com.patrickeddy.undertour.model.Location;
+import com.patrickeddy.undertour.model.TourLocation;
 
 import java.util.List;
 
@@ -18,23 +18,23 @@ import java.util.List;
 public class LocationAdapter extends BaseAdapter{
 
     private Context myContext;
-    private List<Location> myLocations;
+    private List<TourLocation> myTourLocations;
     private LayoutInflater inflater;
 
-    public LocationAdapter(final Context theContext, final List<Location> theLocations) {
+    public LocationAdapter(final Context theContext, final List<TourLocation> theTourLocations) {
         myContext = theContext;
-        myLocations = theLocations;
+        myTourLocations = theTourLocations;
         inflater = LayoutInflater.from(theContext);
     }
 
     @Override
     public int getCount() {
-        return myLocations.size();
+        return myTourLocations.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return myLocations.get(position);
+        return myTourLocations.get(position);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class LocationAdapter extends BaseAdapter{
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.title.setText("Location Row: " + position);
+        holder.title.setText("TourLocation Row: " + position);
         return convertView;
     }
 }

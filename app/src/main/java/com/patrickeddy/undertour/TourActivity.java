@@ -2,10 +2,12 @@ package com.patrickeddy.undertour;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.ListView;
 
 import com.patrickeddy.undertour.adapters.LocationAdapter;
-import com.patrickeddy.undertour.model.Location;
+import com.patrickeddy.undertour.model.TourLocation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,7 +15,9 @@ import java.util.List;
  */
 public class TourActivity extends Activity {
 
-    private List<Location> myLocations;
+    private ListView myLocationListView;
+
+    private List<TourLocation> myTourLocations;
 
     private LocationAdapter myLocationAdapter;
 
@@ -22,6 +26,14 @@ public class TourActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tour_activity);
 
-        
+        myTourLocations = new ArrayList<>();
+        //TODO: Fetch the tour locations from the tour.
+        myTourLocations.add(new TourLocation());
+        myTourLocations.add(new TourLocation());
+        myTourLocations.add(new TourLocation());
+        myLocationAdapter = new LocationAdapter(this, myTourLocations);
+
+        myLocationListView = (ListView) findViewById(R.id.tour_location_list);
+        myLocationListView.setAdapter(myLocationAdapter);
     }
 }

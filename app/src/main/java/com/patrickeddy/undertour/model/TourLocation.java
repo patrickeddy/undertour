@@ -7,8 +7,8 @@ import com.parse.ParseObject;
 /**
  * Created by patrickeddy on 3/18/16.
  */
-@ParseClassName("Location")
-public class Location extends ParseObject {
+@ParseClassName("TourLocation")
+public class TourLocation extends ParseObject {
     public String getName(){
         return (String) get("name");
     }

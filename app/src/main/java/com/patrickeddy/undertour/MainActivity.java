@@ -1,7 +1,6 @@
 package com.patrickeddy.undertour;
 
 import android.content.Intent;
-import android.location.Location;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,9 +10,13 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
+import com.parse.SaveCallback;
 import com.patrickeddy.undertour.adapters.TourAdapter;
 import com.patrickeddy.undertour.model.Tour;
+import com.patrickeddy.undertour.model.TourLocation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,15 +55,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     private void parseInit() {
         // Register this app as a Parse app.
-        Parse.initialize(this, APP_KEY, CLIENT_KEY);
+        Parse.initialize(getApplicationContext(), APP_KEY, CLIENT_KEY);
         // Register the Parse related classes.
-        ParseObject.registerSubclass(com.patrickeddy.undertour.model.Location.class);
+        ParseObject.registerSubclass(TourLocation.class);
         ParseObject.registerSubclass(com.patrickeddy.undertour.model.Tour.class);
-
-        ParseObject testObject = ParseObject.create("Location");
-        testObject.put("name", "Seattle");
-        testObject.saveInBackground();
-        Log.d("INIT", "Parse is initialized.");
     }
 
     public void addTour(final View theView) {
