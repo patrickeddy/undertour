@@ -5,9 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.FocusFinder;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -17,7 +15,6 @@ import android.widget.Toast;
 import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseException;
-import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseRelation;
 import com.parse.SaveCallback;
@@ -35,7 +32,7 @@ public class TourActivity extends Activity implements AdapterView.OnItemClickLis
 
     private Tour myTour;
 
-    private TextView myTourTitleTextView;
+    private TextView myTourTitleTextView, tourLikesListView;
     private ListView myLocationListView;
     private ProgressBar myProgressBar;
 
@@ -54,6 +51,7 @@ public class TourActivity extends Activity implements AdapterView.OnItemClickLis
         myLocationAdapter = new LocationAdapter(this, myTourLocations);
         myLocationListView = (ListView) findViewById(R.id.tour_location_list);
         myTourTitleTextView = (TextView) findViewById(R.id.tour_title);
+        tourLikesListView = (TextView) findViewById(R.id.tour_likes);
         myProgressBar = (ProgressBar) findViewById(R.id.tour_list_progress_bar);
 
         // Get the tour that we're showing.
@@ -71,6 +69,8 @@ public class TourActivity extends Activity implements AdapterView.OnItemClickLis
                 if (myTour != null) {
                     // Set the title
                     myTourTitleTextView.setText(myTour.getTitle());
+                    // Set the likes
+                    tourLikesListView.setText(String.valueOf(myTour.getLikes()));
 
                     ParseRelation<TourLocation> myTourRelation = myTour.getLocationRelation();
                     myTourRelation.getQuery().findInBackground(new FindCallback<TourLocation>() {
@@ -104,6 +104,7 @@ public class TourActivity extends Activity implements AdapterView.OnItemClickLis
                 if (e != null) {
                     Log.e("LIKE-TOUR", e.getMessage());
                 }
+                tourLikesListView.setText(myTour.getLikes());
                 toastLike();
             }
         });

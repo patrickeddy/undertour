@@ -14,13 +14,19 @@
 
         <TextView
             android:id="@+id/tour_title"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textColor="@color/white"
             android:padding="15dp"
             android:textSize="25sp" />
-
+        <TextView
+            android:id="@+id/tour_likes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:paddingTop="25dp"
+            android:textSize="25sp"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
