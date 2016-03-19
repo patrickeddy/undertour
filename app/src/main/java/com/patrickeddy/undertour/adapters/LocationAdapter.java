@@ -56,8 +56,8 @@ public class LocationAdapter extends BaseAdapter{
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-
-        holder.title.setText("TourLocation Row: " + position);
+        TourLocation currentLocation = myTourLocations.get(position);
+        holder.title.setText(currentLocation.getName());
         return convertView;
     }
 }

@@ -9,10 +9,12 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.SaveCallback;
 import com.patrickeddy.undertour.adapters.TourAdapter;
 import com.patrickeddy.undertour.model.Tour;
@@ -41,9 +43,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         // Fetch all of the tours.
         //TODO: Actually fetch the tours from the server.
         myTours = new ArrayList<>();
-        myTours.add(new Tour());
-        myTours.add(new Tour());
-        myTours.add(new Tour());
+        // Fetch the tours
+        ParseQuery<Tour> tourQuery = ParseQuery.getQuery("Tour");
+        tourQuery.findInBackground(new FindCallback<Tour>() {
+            @Override
+            public void done(List<Tour> tours, ParseException e) {
+                if (e != null){
+                    Log.e("TOUR-FETCH", e.getMessage());
+                }
+                myTours.addAll(tours);
+                myTourAdapter.notifyDataSetChanged();
+            }
+        });
 
         // Set the adapter.
         myTourAdapter = new TourAdapter(this, myTours);
@@ -134,6 +145,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent newTourIntent = new Intent(this, TourActivity.class);
+        newTourIntent.putExtra("tourObjectId", myTours.get(position).getObjectId());
         startActivity(newTourIntent);
         Toast.makeText(this, "Clicked tour!", Toast.LENGTH_SHORT).show();
     }
