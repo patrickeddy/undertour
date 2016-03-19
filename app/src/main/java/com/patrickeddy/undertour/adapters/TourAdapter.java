@@ -35,7 +35,11 @@ public class TourAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return myTours.get(position);
+        if (getCount() < position) {
+            return null;
+        } else {
+            return myTours.get(position);
+        }
     }
 
     @Override

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.patrickeddy.undertour">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application
@@ -17,6 +19,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".TourActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".EditTourActivity">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>

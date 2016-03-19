@@ -33,4 +33,9 @@ public class Tour extends ParseObject {
     public void removeLocation(final TourLocation theLocation) {
         getLocationRelation().remove(theLocation);
     }
+
+    public void like() {
+        int likes = getLikes();
+        put("likes", likes++);
+    }
 }
