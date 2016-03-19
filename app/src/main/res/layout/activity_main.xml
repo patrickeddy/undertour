@@ -38,5 +38,8 @@
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:onClick="addTour"
-        android:text="Add Tour" />
+        android:textColor="@color/white"
+        android:text="Add Tour"
+
+        android:background="@color/greenAccent"/>
 </RelativeLayout>
