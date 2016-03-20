@@ -8,24 +8,25 @@
         android:id="@+id/app_title"
         style="@style/AppBar"
         android:layout_alignParentTop="true">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textColor="@color/white"
-            android:text="Add New Tour"
             android:padding="15dp"
+            android:text="Add New Tour"
+            android:textColor="@color/white"
             android:textSize="25sp" />
-        </LinearLayout>
+    </LinearLayout>
 
     <EditText
         android:id="@+id/edit_tour_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/app_title"
-        android:padding="15dp"
         android:capitalize="words"
         android:hint="Tour Name"
+        android:padding="15dp"
         android:textSize="20sp" />
 
     <ListView
@@ -54,8 +55,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:background="@color/greenAccent"
                 android:onClick="createTour"
                 android:text="Create Tour"
+                android:textColor="@color/white"
                 android:textSize="15sp" />
 
             <Button
@@ -65,8 +69,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_weight="1"
+                android:background="@color/greenAccent"
                 android:onClick="addNewLocation"
-                android:text="Add New Location" />
+                android:text="Add New Location"
+                android:textColor="@color/white" />
 
         </LinearLayout>
     </LinearLayout>

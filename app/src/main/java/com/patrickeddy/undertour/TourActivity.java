@@ -73,7 +73,7 @@ public class TourActivity extends Activity implements AdapterView.OnItemClickLis
                     tourLikesListView.setText(String.valueOf(myTour.getLikes()));
 
                     ParseRelation<TourLocation> myTourRelation = myTour.getLocationRelation();
-                    myTourRelation.getQuery().findInBackground(new FindCallback<TourLocation>() {
+                    myTourRelation.getQuery().addDescendingOrder("createdAt").findInBackground(new FindCallback<TourLocation>() {
                         @Override
                         public void done(List<TourLocation> locations, ParseException e) {
                             if (e != null) {
@@ -104,11 +104,10 @@ public class TourActivity extends Activity implements AdapterView.OnItemClickLis
                 if (e != null) {
                     Log.e("LIKE-TOUR", e.getMessage());
                 }
-                tourLikesListView.setText(myTour.getLikes());
-                toastLike();
             }
         });
-
+        tourLikesListView.setText(String.valueOf(myTour.getLikes()));
+        toastLike();
     }
 
     private void toastLike() {
