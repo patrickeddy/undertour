@@ -7,7 +7,8 @@
     tools:context=".TourActivity">
 
     <LinearLayout
-        style="@style/AppBar">
+        style="@style/AppBar"
+        android:background="@color/greenAccent">
         <TextView
             android:id="@+id/tour_title"
             android:layout_width="wrap_content"
@@ -27,8 +28,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:background="@drawable/heart"
-            android:onClick="likeTour" />
+            android:src="@drawable/heart"
+            android:onClick="likeTour"
+            android:background="?android:selectableItemBackground"/>
     </LinearLayout>
     <ProgressBar
         android:id="@+id/tour_list_progress_bar"

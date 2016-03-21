@@ -156,6 +156,10 @@ public class EditTourActivity extends Activity implements GoogleApiClient.Connec
     }
 
     private void createTour() {
+        if (tourNameEditText.getText() == null || tourNameEditText.getText().length() == 0) {
+            tourNameEditText.setError("You must name the new tour.");
+            return;
+        }
         Tour newTour = new Tour();
         // Add all of the locations to the tour.
         ParseRelation<TourLocation> tourRelation = newTour.getLocationRelation();
