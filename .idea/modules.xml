@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/UnderTour.iml" filepath="$PROJECT_DIR$/UnderTour.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/undertour.iml" filepath="$PROJECT_DIR$/undertour.iml" />
     </modules>
   </component>
 </project>
